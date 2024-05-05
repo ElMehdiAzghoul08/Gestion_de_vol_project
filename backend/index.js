@@ -6,7 +6,7 @@ var connection = require('./db/db');
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
-app.set('view engine','ejs');
+app.set('view engine', 'ejs');
 
 
 app.listen(3000, function () {
