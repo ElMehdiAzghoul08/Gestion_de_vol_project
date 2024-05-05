@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Reservation</title>
+</head>
+<body>
+    <h1>Flight Options</h1>
+    <% flights.forEach(flight => { %>
+        <div>
+            <h2>Flight <%= flight.numero %></h2>
+            <p>Departure City: <%= flight.villeDepart %></p>
+            <p>Arrival City: <%= flight.villeArrivee %></p>
+            <p>Departure Time: <%= flight.heureDepart %></p>
+            <p>Arrival Time: <%= flight.heureArrivee %></p>
+            <form action="/reservations" method="POST">
+                <input type="hidden" name="flightId" value="<%= flight.id %>">
+                <button type="submit">Make Reservation</button>
+            </form>
+        </div>
+    <% }) %>
+</body>
+</html>
