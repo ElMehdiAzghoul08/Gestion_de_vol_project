@@ -22,7 +22,6 @@ app.post('/clients', (req, res) => {
   connection.query(query, [code, nom, prenom, email, telephone], (err, results) => {
     if (err) {
       console.error('Error adding new client:', err);
-      // res.redirect('/error');
       return;
     }
     console.log('New client added:', results);
@@ -59,7 +58,7 @@ app.get('/allVols', function (req, res) {
 app.post('/addVol', function (req, res) {
   var { numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces } = req.body;
   var sql = "INSERT INTO vol (numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces) VALUES (?, ?, ?, ?, ?, ?, ?)";
-  var values = [numero, str_to_date(date), villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces];
+  var values = [numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces];
 
   connection.query(sql, values, function (err, result) {
     if (err) {
