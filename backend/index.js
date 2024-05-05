@@ -6,6 +6,8 @@ var connection = require('./db/db');
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+app.set('view engine','ejs');
+
 
 app.listen(3000, function () {
   console.log('Server is running on port ' + 3000);
@@ -25,7 +27,7 @@ app.post('/clients', (req, res) => {
       return;
     }
     console.log('New client added:', results);
-    // res.redirect('/clients');
+    res.redirect('/clients');
   });
 });
 
@@ -43,15 +45,16 @@ app.get('/clients', function (req, res) {
 
 
 app.get('/allVols', function (req, res) {
-  var sql = "SELECT * FROM vol";
-  connection.query(sql, function (err, results) {
-    if (err) {
-      console.error("Error fetching data: " + err.message);
-      res.status(500).send("Internal Server Error");
-      return;
-    }
-    res.json(results);
-  });
+  res.render('index');
+  // var sql = "SELECT * FROM vol";
+  // connection.query(sql, function (err, results) {
+  //   if (err) {
+  //     console.error("Error fetching data: " + err.message);
+  //     res.status(500).send("Internal Server Error");
+  //     return;
+  //   }
+  //   res.json(results);
+  // });
 });
 
 
@@ -74,6 +77,7 @@ app.post('/addVol', function (req, res) {
 
 
 app.get('/reservations/new', (req, res) => {
+  res.render('reservations');
   let clients, flights;
   connection.query('SELECT * FROM Client', (err, results) => {
     if (err) {
