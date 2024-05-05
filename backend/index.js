@@ -114,21 +114,3 @@ app.post('/reservations', (req, res) => {
 app.get('/payment', (req, res) => {
   res.render('payment');
 });
-
-
-
-
-// Route to handle form submission for adding a new flight
-// app.post('/flights', (req, res) => {
-//   const { numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces } = req.body;
-//   const query = 'INSERT INTO vol (numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces) VALUES (?, ?, ?, ?, ?, ?, ?)';
-//   connection.query(query, [numero, date, villeDepart, villeArrivee, heureDepart, heureArrivee, nombrePlaces], (err, results) => {
-//     if (err) {
-//       console.error('Error adding new flight:', err);
-//       res.redirect('/error');
-//       return;
-//     }
-//     console.log('New flight added:', results);
-//     res.redirect('/flights');
-//   });
-// });

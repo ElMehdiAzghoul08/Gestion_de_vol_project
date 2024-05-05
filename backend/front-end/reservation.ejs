@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Reservation</title>
+</head>
+<body>
+    <h1>Make a Reservation</h1>
+    <form action="/reservations" method="POST">
+        <label for="clientId">Select Client:</label>
+        <select id="clientId" name="clientId">
+            <% clients.forEach(client => { %>
+                <option value="<%= client.id %>"><%= client.nom %> <%= client.prenom %></option>
+            <% }) %>
+        </select>
+        <label for="flightId">Select Flight:</label>
+        <select id="flightId" name="flightId">
+            <% addVol.forEach(flight => { %>
+                <option value="<%= flight.id %>"><%= flight.numero %> - <%= flight.villeDepart %> to <%= flight.villeArrivee %></option>
+            <% }) %>
+        </select>
+        <button type="submit">Make Reservation</button>
+    </form>
+</body>
+</html>
